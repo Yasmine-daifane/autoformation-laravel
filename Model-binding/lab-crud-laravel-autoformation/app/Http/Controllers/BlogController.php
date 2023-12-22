@@ -52,8 +52,7 @@ return view('blog.show' ,[
         'post'=> $post
 
     ]);
-
-       
+    
     }
 }
 //  lister les article lo'sque fais l'appele d'une vue ont a la possibilite de lui envoyer des variable pour generer les choses 
