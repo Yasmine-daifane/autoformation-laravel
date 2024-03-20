@@ -47,6 +47,8 @@ class BlogController extends Controller{
 
     public function index (): View {
 
+       
+
         return view ('blog.index', [
             'posts' => post::with('tags', 'category')->paginate(10)
         ]);
