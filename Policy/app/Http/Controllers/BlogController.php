@@ -72,7 +72,7 @@ class BlogController extends Controller{
         //     'password' => Hash::make('0000')
             
         // ]);
-        dd(Auth::user()->can('update',$post));
+        // dd(Auth::user()->can('update',$post));
         return view ('blog.index', [
             'posts' => post::with('tags', 'category')->paginate(10)
         ]);
