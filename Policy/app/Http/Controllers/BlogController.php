@@ -1,5 +1,21 @@
 <?php
 
+// namespace App\Http\Controllers;
+// use App\Models\Tag;
+// use App\Models\Post;
+// use App\Models\User;
+// use App\Models\Category;
+// use Illuminate\View\View;
+// use Illuminate\Http\Request;
+// use App\Http\Controllers\Controller;
+// use Illuminate\Support\Facades\Hash;
+// use Illuminate\Http\RedirectResponse;
+// use App\Http\Requests\FormPostRequest;
+// use Illuminate\Support\Facades\Auth;
+// use Illuminate\Auth\Access\AuthorizationException ;
+
+
+
 namespace App\Http\Controllers;
 use App\Models\Tag;
 use App\Models\Post;
@@ -12,6 +28,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\FormPostRequest;
 use Illuminate\Support\Facades\Auth;
+// use Illuminate\Support\Facades\Gate;
+use  Illuminate\Auth\Access\AuthorizationException;
 
 class BlogController extends Controller{
     public function create(){
@@ -47,7 +65,14 @@ class BlogController extends Controller{
     }
 
     public function index (Post $post): View {
-        dd(Auth::User()->cannot('delete',$post)) ;
+      
+        // User::create([
+        //     'name' =>'huss',
+        //     'email' => 'h@gmail.com',
+        //     'password' => Hash::make('0000')
+            
+        // ]);
+        dd(Auth::user()->can('update',$post));
         return view ('blog.index', [
             'posts' => post::with('tags', 'category')->paginate(10)
         ]);
