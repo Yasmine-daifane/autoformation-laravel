@@ -32,6 +32,7 @@ class BlogController extends Controller{
     }
 
     public function edit(Post $post){
+    
         return view('blog.edit',[
             'post'=> $post,
             'categories' => Category::select('id', 'name')->get(),
@@ -45,8 +46,8 @@ class BlogController extends Controller{
         return redirect()->route('blog.show', ['slug' => $post->slug, 'post' => $post->id])->with('success', "l'article a bien été modifiée");
     }
 
-    public function index (): View {
-
+    public function index (Post $post): View {
+        dd(Auth::User()->cannot('delete',$post)) ;
         return view ('blog.index', [
             'posts' => post::with('tags', 'category')->paginate(10)
         ]);

@@ -6,7 +6,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class PostPolicy
+class BlogPolicy
 {
     /**
      * Determine whether the user can view any models.
